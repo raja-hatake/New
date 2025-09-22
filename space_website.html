@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Events</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+<body>
+  <div class="scroll-progress"></div>
+
+  <div class="stars"></div>
+  <div class="stars"></div>
+
+  <div class="spaceship-container">
+    <div class="spaceship" id="spaceship">
+      <div class="spaceship-model" id="spaceship-model">
+        <model-viewer 
+            id="spaceship-viewer"
+            src="spaceship.glb" 
+            alt="A 3D model of a spaceship"
+            camera-controls
+            disable-zoom
+            disable-pan
+            camera-orbit="0deg 75deg 105%"
+            interaction-prompt="none">
+        </model-viewer>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section" id="tech-section">
+    <h1 id="main-title">Tech Events</h1>
+
+    <div class="planets-wrapper">
+      <div class="planet-row planet-1" data-delay="0">
+        <img src="plan1.png" alt="Planet 1" class="planet-img">
+        <p class="planet-name">COSMIC LOGIC</p>
+      </div>
+      <div class="planet-row planet-2" data-delay="200">
+        <img src="plan2.png" alt="Planet 2" class="planet-img">
+        <p class="planet-name">QUANTUM CIRCUIT</p>
+      </div>
+      <div class="planet-row planet-3" data-delay="400">
+        <img src="plan3.png" alt="Planet 3" class="planet-img">
+        <p class="planet-name">GARGANTUA'S GLITCH</p>
+      </div>
+      <div class="planet-row planet-4" data-delay="600">
+        <img src="plan4.png" alt="Planet 4" class="planet-img">
+        <p class="planet-name">TESSERACT PROMPTS</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section" id="nontech-section">
+    <h2 id="nontech-title">Non-Tech Events</h2>
+
+    <div class="endurance-img-container">
+      <img src="endurance1.png" alt="Endurance" class="endurance-img">
+      <div class="astronaut astronaut-top" data-delay="0">
+        <img src="astroo3.png" alt="Astronaut Top">
+        <p class="astronaut-name">THE LAZARUS MISSION</p>
+      </div>
+      <div class="astronaut astronaut-right" data-delay="300">
+        <img src="astroo3.png" alt="Astronaut Right">
+        <p class="astronaut-name">INTERSTELLAR CINE-QUEST</p>
+      </div>
+      <div class="astronaut astronaut-bottom" data-delay="600">
+        <img src="astrooo2.png" alt="Astronaut Bottom">
+        <p class="astronaut-name">THE FIFTH DIMENSION</p>
+        <div class="astronaut astronaut-left">
+      <img src="astroo4.png" alt="Astronaut Left">
+      <p class="astronaut-name">INTERSTELLAR CINE-QUEST</p>
+    </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

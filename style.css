@@ -1,0 +1,290 @@
+    /* Import fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+    @font-face {
+      font-family: 'Deltha';
+      src: local('Deltha'), url('https://fonts.cdnfonts.com/s/19184/Deltha.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Background Slideshow */
+    body {
+      min-width: 350px;
+      min-height: 100vh;
+      width: 100%;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      font-family: 'Orbitron', 'Deltha', sans-serif;
+      position: relative;
+      z-index: 0;
+      text-align: center;
+    }
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: -2;
+      animation: fadeSlideshow 15s infinite;
+      transition: opacity 2s ease-in-out;
+    }
+    body::before { background-image: url("tech.jpg"); }
+body::after { background-image: url("tech1.jpg"); animation-delay: 7.5s; }
+
+    @keyframes fadeSlideshow {
+      0%, 40% { opacity: 1; }
+      50%, 90% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Stars background */
+    .stars {
+      width: 1px;
+      height: 1px;
+      background: white;
+      position: absolute;
+      animation: animStar 50s linear infinite, twinkle 2s infinite alternate;
+      opacity: 0.8;
+      z-index: -1;
+    }
+    .stars:nth-child(2) {
+      box-shadow: 50px 200px white, 150px 600px white, 300px 1000px white,
+                  500px 400px white, 700px 800px white, 900px 300px white,
+                  1200px 900px white, 1400px 500px white, 1600px 700px white;
+    }
+    @keyframes animStar { from {transform: translateY(0);} to {transform: translateY(-2000px);} }
+    @keyframes twinkle { from { opacity: 0.5; } to { opacity: 1; } }
+
+    /* Spaceship Container */
+    .spaceship-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .spaceship {
+      position: absolute;
+      width: 120px;
+      height: 60px;
+      left: -50px;
+      top: 0%;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform-origin: center;
+    }
+
+.spaceship-model {
+  width: 200%;
+  height: 200%;
+}
+
+/* ADD THIS to the end of your style.css file */
+
+model-viewer {
+  width: 300%;
+  height: 300%;
+
+  --mv-interaction-prompt-display: none; /* Hides the little hand icon */
+}
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+      100% { box-shadow: 0 0 40px rgba(0, 255, 255, 1); }
+    }
+
+    /* Titles with animation */
+    h1 { 
+      margin: 40px 0 20px 0; 
+      font-size: 2rem; 
+      text-shadow: 0 0 15px #0ff, 0 0 25px #09f, 0 0 35px #fff;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+    h1.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #nontech-title { 
+      margin: 40px 0 100px 0; 
+      font-size: 2rem; 
+      text-shadow: 0 0 12px #0ff, 0 0 20px #09f, 0 0 28px #fff;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+    #nontech-title.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Planets (Tech Events) with scroll animations */
+    .planets-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 40px 100px;
+      gap: 100px 0;
+    }
+    .planet-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-basis: 50%;
+      opacity: 0;
+      transform: translateY(50px) scale(0.8);
+      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .planet-row.animate {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .planet-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      animation: rotatePlanet 20s linear infinite;
+      object-fit: cover;
+      /*box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);*/
+      transition: all 0.3s ease;
+    }
+    .planet-img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
+    }
+    .planet-name {
+      margin-top: 12px;
+      font-size: 1.3rem;
+      text-shadow: 0 0 8px #0ff, 0 0 12px #09f;
+      transition: all 0.3s ease;
+    }
+    .planet-row:hover .planet-name {
+      text-shadow: 0 0 12px #0ff, 0 0 20px #09f, 0 0 30px #fff;
+    }
+    @keyframes rotatePlanet { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    @media (min-width: 481px) {
+      .planet-row:nth-child(1) { text-align: left; }
+      .planet-row:nth-child(2) { text-align: right; margin-top: 250px; }
+      .planet-row:nth-child(3) { text-align: left; margin-top: 60px; }
+      .planet-row:nth-child(4) { text-align: right; margin-top: 250px; }
+    }
+
+    /* Endurance Section (Non-Tech) with animations */
+    /* Endurance Section (Non-Tech) */
+.endurance-img-container {
+  position: relative;
+  margin: 40px auto;
+  max-width: 500px;
+  width: 90%;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.endurance-img { width: 100%; height: auto; z-index: 5; position: relative; }
+.astronaut {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  animation: bob 4s ease-in-out infinite;
+}
+.astronaut img { width: 110%; height: auto; }
+.astronaut-name { margin-top: 6px; margin-bottom: 15px; font-size: 0.9rem; font-weight: bold; text-align: center; }
+.astronaut-top { top: -105px; left:25%; transform: translateX(-100%); }
+.astronaut-right { top:30%; right: -125px; transform: translateY(-50%); }
+.astronaut-bottom { bottom: -125px; left: 25%; transform: translateX(-50%); }
+.astronaut-left { top: 25%; left: -130px; transform: translateY(-50%); }
+@keyframes bob { 0% { transform: translateY(0); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0); } }
+
+
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 0px;
+      background: linear-gradient(90deg, #0ff, #09f, #fff);
+      z-index: 1000;
+      transition: width 0.01s ease;
+    }
+
+    /* Page fade-in animation */
+    .page-section {
+      opacity: 0;
+      transform: translateY(100px);
+      transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .page-section.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .endurance-img-container { height: 320px; }
+      .astronaut { width: 80px; }
+      .astronaut-name { font-size: 0.7rem; }
+      .astronaut-top { top: -100px; }
+      .astronaut-right { right: -100px; }
+      .astronaut-bottom { bottom: -100px; }
+      .astronaut-left { left: -100px; }
+      .spaceship {
+        width: 80px;
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .planets-wrapper { flex-direction: column; gap: 30px; align-items: center; }
+      .planet-row { flex-basis: 100%; text-align: center; width: 90%; max-width: 320px; }
+      .planet-img { width: 100%; height: auto; }
+      .planet-name { font-size: 1.2rem; }
+
+      .endurance-img { display: none; }
+      .endurance-img-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: auto;
+        margin: 20px auto;
+        gap: 20px;
+      }
+      .astronaut {
+        position: relative;
+        width: 100%;
+        max-width: 320px;
+        margin: 10px 0;
+        animation: none;
+        flex-direction: column;
+        align-items: center;
+      }
+      .astronaut img { width: 100%; height: auto; }
+      .astronaut-name { font-size: 1rem; margin-top: 8px; text-align: center; }
+      
+      .spaceship {
+        width: 100px;
+        height: 100px;
+      }
+    }
